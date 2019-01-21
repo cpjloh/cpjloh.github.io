@@ -1,0 +1,24 @@
+p {
+    /*background-color:silver;*/
+    padding-left:50px;
+    font-family:arial,sans-serif,helvetica;
+}
+
+div {
+    column-count:3;
+}
+
+/*
+.column {
+    float:left;
+    width:33.33%;
+}
+*/
+
+/*
+.row:after {
+    content:"";
+    display:table;
+    clear:both;
+}
+*/
