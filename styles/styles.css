@@ -8,12 +8,13 @@ h2 {
 
 h3 {
     margin-bottom:0;
+    text-align:left;
 }
 
 body {
     background-color:lightgray; /*lightgray; /*#bbb;*/
     font-family: arial, sans-serif, helvetica;
-    margin-top:100px;
+    margin-top:2%;
     margin-left:10%;
     margin-right:10%;
     text-align:justify;
