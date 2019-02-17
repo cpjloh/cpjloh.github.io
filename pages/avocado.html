@@ -44,8 +44,8 @@
             </ul>
             <p>My technical work has been <strong>utilizing
                 OpenCV</strong> with <strong>Python</strong> for lane tracking. 
-            A video and single frame from my work are below.</p>
-            <p>I have <em>really</em> enjoyed this project, as well as my
+            Some videos of my work are below.</p>
+            <p>Note: I have <em>really</em> enjoyed this project, as well as my
             computer vision course, and will ideally find work in this
             field.</p>
             <video width="960" height="540" 
@@ -59,17 +59,25 @@
             The center point tracks the center of the lane, which is used as
             input to our PID lane keeping controller.
             </p>
-            <br>
-            <img src="../media/avocado/laneTracking.jpg" 
-                 alt="Capstone Lane Tracking"
-                 title="Lane Tracking on 101 South"
-                 style="width:960px;height:540px;border-radius:25px">
-            <p style="text-align:center;">
-            A still from the above video.
+            <p>The following video was taken on February 16, 2019 after many
+            hours of my teammate and me working on electronics and
+            software. The video shows lane lines mounted on a chair (seen
+            at the bottom of the frame) and a camera (on the desk). The camera
+            captures video, which it feeds to the not-so-micro Jetson TX2 
+            microcontroller for the necessary image processing. Finally, a 
+            pwm signal is sent to an Arduino (we do this because the Arduino, 
+            unlike the Jetson, has pwm hardware), which then controls 
+            the vehicle.
             </p>
+            <video width="960" height="540" 
+                 alt="Lane Tracking on 101 South Video"
+                title="Lane Tracking on 101 South Video" controls>
+                <source src="../media/firstLaneTrackingOnCar.mp4" type="video/mp4">
+            </video>
+            <br>
         </div>
         <footer>
-            <p>Last updated: January 21, 2019</p>
+            <p>Last updated: February 17, 2019</p>
         </footer>
     </body>
 </html>
