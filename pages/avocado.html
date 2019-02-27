@@ -30,6 +30,7 @@
             <a href="../index.html#projects"><h3>AVOCADO (Autonomous Vehicles Operating Collaboratively
                 And Detecting Obstacles)</h3></a>
             <h4 style="margin-top:0">October 2018 - June 2019</h4>
+            <u><b><a href="#avocadoTimeline">SEE VIDEOS BELOW!!!</a></b></u>
             <p>My computer engineering capstone project
             aims to implement <strong>lane keeping</strong>, <strong>object
                 detection and classification</strong>, and <strong>
@@ -38,9 +39,8 @@
             <p>My primary contributions are:</p>
             <ul>
                 <li>Lane tracking using computer vision</li>
+                <li>Designing and building system framework</li>
                 <li>Project management</li>
-                <li>Communication between mechanical and computer engineering
-                    teams</li>
             </ul>
             <p>My technical work has been <strong>utilizing
                 OpenCV</strong> with <strong>Python</strong> for lane tracking.
@@ -50,20 +50,26 @@
             <p>Note: I have <em>really</em> enjoyed this project, as well as my
             computer vision course, and will ideally find work in this
             field.</p>
-            <video width="960" height="540" 
-                 alt="Lane Tracking on 101 South Video"
-                title="Lane Tracking on 101 South Video" controls>
-                <source src="../media/laneTrackingWebsite.mp4" type="video/mp4">
-            </video>
-            <p>The above video shows my lane detection algorithm on a section of southbound
+            <div id="avocadoTimeline">
+            <hr>
+            <h4>Fall 2018</h4>
+            <p>The following video shows my lane detection algorithm on a section of southbound
             Highway 101, north of Paso Robles. The algorithm identifies the lane lines within a
             region of interest and paints them green for programmer visibility.
             The center point tracks the center of the lane, which is used as
             input to our PID lane keeping controller.
             </p>
-            <p>The following video was taken on February 16, 2019 after many
+            <video width="960" height="540" 
+                 alt="Lane Tracking on 101 South Video"
+                title="Lane Tracking on 101 South Video" controls>
+                <source src="../media/laneTrackingWebsite.mp4" type="video/mp4">
+            </video>
+            <hr>
+            <h4>February 16, 2019</h4>
+            <p>After many
             hours of my teammate and me working on electronics and
-            software. The video shows lane lines mounted on a chair (seen
+            software we were able to produce the following. 
+            The video shows lane lines mounted on a chair (seen
             at the bottom of the frame) and a camera (on the desk). The camera
             captures video, which it feeds to the not-so-micro Jetson TX2 
             microcontroller for the necessary image processing. Finally, a 
@@ -76,8 +82,10 @@
                 title="Lane Tracking in lab" controls>
                 <source src="../media/firstLaneTrackingOnCar.mp4" type="video/mp4">
             </video>
-            <p>This video, taken on February 17, 2019, shows our car driving
-            on the track for time and navigating an S-bend! I was able to 
+            <hr>
+            <h4>February 17, 2019</h4>
+            <p>This video shows our car driving
+            on the track and navigating an S-bend! I was able to 
             access the car through WiFi
             (ssh) and run a script to start the vehicle. The vehicle
             navigates the roadway and I manually shut off the vehicle
@@ -89,15 +97,41 @@
             <p>Note that the hardware is a mess right now as it allows for easy
             access of electronics in the development phase. We'll clean it up
             over time.
+            </p>
             <video width="960" height="540" 
                  alt="Lane Tracking on track for first time"
                 title="Lane Tracking on track for first time" controls>
                 <source src="../media/firstSBend.mp4" type="video/mp4">
             </video>
+            <hr>
+            <h4>February 25, 2019</h4>
+            <p>This video shows our car driving
+            around the track for one of the first times! The main differences
+            between the car in the previous video and now are:
+            </p>
+            <ul>
+                <li>Video logging to assist with debugging.</li>
+                <li>Improved lane tracking.</li>
+                <li>A new electronic speed controller (ESC) to allow for
+                    more consistent motor control.</li>
+                <li>Improved gains in the lane tracking PID controller.</li>
+                <li>Better track design.</li>
+                <li>Confidence!</li>
+            </ul>
+            <p>This project is incredibly fun, but incredibly time consuming.
+            Still, we make progress most days, and that alone is motivation
+            to keep working on it...the best is yet to come!
+            </p>
+            <video width="960" height="540" 
+                 alt="Lane Tracking around track for first time"
+                title="Lane Tracking around track for first time" controls>
+                <source src="../media/aroundTrack.mp4" type="video/mp4">
+            </video>
             <br>
+            </div> <!-- end of avocado timeline -->
         </div>
         <footer>
-            <p>Last updated: February 17, 2019</p>
+            <p>Last updated: February 27, 2019</p>
         </footer>
     </body>
 </html>
