@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jacob Loh</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <script src="../scripts/script.js"></script>
+        <meta charset="UTF-8">
+        <meta name="author" content="Jacob Loh">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <html lang ="en-US">
+    </head>
+    <body>
+        <header>
+            <a href="../index.html">
+            <h1>Jacob Loh</h1>
+            </a>
+            <!--<p>A little tagline about myself.</p>-->
+        </header>
+        <hr>
+        <nav style="margin-top:3%;margin-bottom:3%;">
+            <ul style="text-align:center;">
+                <li id="nav_li"><a href="../index.html#about">About</a></li>
+                <li id="nav_li"><a href="../index.html#experience">Experience</a></li>
+                <li id="nav_li"><a href="../index.html#projects">Projects</a></li>
+                <li id="nav_li"><a href="../index.html#education">Education</a></li>
+                <li id="nav_li"><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="hockey">
+            <a href="../index.html#projects"><h3>Autonomous Hockey Table</h3></a>
+            <h4 style="margin-top:0">March 2019</h4>
+            <p>This autonomous hockey table was part of a project by a previous
+            team. Thus, my team used the existing hardware and rewrote all the
+            software. This rewrite included improved vision capabilities, faster
+            PID control, and reduced noise. This was an opportunity for me to
+            use <strong>Python</strong> and <strong>OpenCV</strong>.
+            </p>
+            <p>I was the sole author of the computer vision used in this project.
+            The algorithm begins begins by thresholding the image to remove
+            all pixels that are outside of a red color bounds. Next, the
+            erode morphological transformation is applied to reduce the noise
+            in the image and remove the red on the air hockey table. The table
+            then selects the largest section of red on the table and makes a
+            prediction of its future positions by using a history of its previous
+            positions to approximate the puck's velocity.
+            </p>
+            <p>There are two issues that impacted the project's final result.
+            First, the encoder values began to drift. This results in the slider
+            confidentally moving to hit a puck but missing as the positioning
+            system has lost accuracy. This could be improved by recalibrating
+            the slider every few seconds using a position found using the
+            camera. The second issue was the table's ability to play at very
+            high speeds, which is the result of the puck blurring and becoming
+            invisible to the algorithm. Our team wished to use a better camera,
+            but unfortunately we did not have enough time.
+            </p>
+            <p>See videos below.</p>
+            <hr>
+            <video
+                 alt="Playing Autonomous Hockey Table"
+                title="Playing the autonomous hockey table" controls>
+                <source src="../media/hockeyTable.mp4" type="video/mp4">
+            </video>
+            <hr>
+            <video width="640" height="480" 
+                 alt="Computer's perspective of the hockey table"
+                title="Computer's perspective of the hockey table" controls>
+                <source src="../media/hockeyTableAbove.mp4" type="video/mp4">
+            </video>
+            <p>*Note that the above video is from the computer's perspective and
+            is running faster than real-time.</p>
+        </div>
+        <footer>
+            <p>Last updated: March 13, 2019</p>
+        </footer>
+    </body>
+</html>
+
