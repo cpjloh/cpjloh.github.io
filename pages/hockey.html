@@ -37,12 +37,11 @@
             </p>
             <p>I was the sole author of the computer vision used in this project.
             The algorithm begins begins by thresholding the image to remove
-            all pixels that are outside of a red color bounds. Next, the
-            erode morphological transformation is applied to reduce the noise
-            in the image and remove the red on the air hockey table. The table
-            then selects the largest section of red on the table and makes a
-            prediction of its future positions by using a history of its previous
-            positions to approximate the puck's velocity.
+            all pixels that are outside of some red color bounds. Next, the
+            OpenCV morphological transformation "erode" is applied to reduce the noise
+            in the image and remove the red on the air hockey table. The algorithm
+            then selects the largest section of red on the table and using a simplified Kalman
+            filter, the puck's approximate position is determined.
             </p>
             <p>There are two issues that impacted the project's final result.
             First, the encoder values began to drift. This results in the slider
