@@ -36,6 +36,8 @@ video {
     display:block;
     border-radius:25px;
     border:solid;
+    width:60%;
+    height:60%;
 }
 
 #nav_li {
