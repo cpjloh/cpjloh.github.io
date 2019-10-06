@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jacob Loh</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <script src="../scripts/script.js"></script>
+        <meta charset="UTF-8">
+        <meta name="author" content="Jacob Loh">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <html lang ="en-US">
+    </head>
+    <body>
+        <header>
+            <a href="../index.html">
+            <h1>Jacob Loh</h1>
+            </a>
+            <!--<p>A little tagline about myself.</p>-->
+        </header>
+        <hr>
+        <nav style="margin-top:3%;margin-bottom:3%;">
+            <ul style="text-align:center;">
+                <li id="nav_li"><a href="../index.html#about">About</a></li>
+                <li id="nav_li"><a href="../index.html#experience">Experience</a></li>
+                <li id="nav_li"><a href="../index.html#projects">Projects</a></li>
+                <li id="nav_li"><a href="../index.html#education">Education</a></li>
+                <li id="nav_li"><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <hr>
+        <div id="hockey">
+            <a href="../index.html#projects"><h3>Traffic Sign Recognition</h3></a>
+            <h4 style="margin-top:0">March 2019</h4>
+            <p>This traffic sign recognition (TSR) program my final project in
+            my computer vision class. The motivation for the project was to
+            explore computer vision concepts while building a tool for my
+            senior project 
+            <a href="./avocado.html"><strong><u> senior project</u></strong></a>.
+            </p>
+            <p>The theory behind this project was to train a support vector
+            machine (SVM) to recognize various traffic signs. In order to
+            reduce the dimensionality of the search space, the dimensionality
+            was reduced by using the Histogram of Oriented Gradients (HOG)
+            feature descriptor. Images were parsed for large sections of traffic sign
+            colors (red and yellow, in our case), and any large blob of color
+            was then run through the SVM to see if it was a traffic sign or
+            noise.
+            </p>
+            <p>I thought the training aspect of this project was very interesting.
+            Machine learning typically requires a minimum of thousands of examples; 
+            however, SVMs can learn with far fewer examples. Furthermore, rather
+            than label the images manually, I wrote an algorithm that labeled
+            the images for me! The algorithm worked like so:
+            <ul>
+                <li>The algorithm requests a sign (i.e. a stop sign)</li>
+                <li>The algorithm waits a few seconds while the user holds
+                    up the requested sign</li>
+                <li>The algorithm finds the largest object with the
+                    color of the requested sign (i.e. look for the largest
+                    red object in the image when assuming a stop sign is
+                    being shown)</li>
+                <li>The algorithm labels this image as the request sign (i.e.
+                    the stop sign) and adds this to the training set</li>
+                <li>Repeat n times for this sign (usually about 200 times; with
+                    a camera running at 30 fps, this means roughly 7 seconds 
+                    of video to produce the necessary training data)</li>
+                <li>Repeat for the desired signs</li>
+                <li>Train on various objects and noise</li>
+            </ul>
+            </p>
+            <p>This project was written in <strong>Python</strong> and 
+            furthered my understanding of <strong>OpenCV</strong> and
+            <strong>computer vision</strong>.
+            </p>
+            <p>See the video below!</p>
+            <p>Note that in the video you will notice two interesting things
+            (beyond the TSR!). The first is the terminal in the background,
+            which shows the computer's requests for various signs (the training
+            session was not recorded). The second is that the STOP and POTS signs,
+            though different when both in the same orientation, are identical
+            when one of the signs is flipped. This is due to how HOG breaks
+            down the image to produce the feature descriptor (namely, small
+            boxes). HOG enough image to distinguish individual characters, but 
+            not enough to identify their orientation (that would have involved
+            dramatically increasing the dimensionality, making the training
+            and program much slower).
+            </p>
+            <hr>
+            <video
+                 alt="Testing TSR during class demo"
+                title="Testing TSR during class demo" controls>
+                <source src="../media/tsr.mp4" type="video/mp4">
+            </video>
+            <hr>
+            <p>*Note that the above video is from the computer's perspective and
+            is running faster than real-time.</p>
+        </div>
+        <footer>
+            <p>Last updated: October 6, 2019</p>
+        </footer>
+    </body>
+</html>
