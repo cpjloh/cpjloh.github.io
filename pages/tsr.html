@@ -30,23 +30,22 @@
         <div id="hockey">
             <a href="../index.html#projects"><h3>Traffic Sign Recognition</h3></a>
             <h4 style="margin-top:0">March 2019</h4>
-            <p>This traffic sign recognition (TSR) program my final project in
+            <p>See the video below!</p>
+            <p>This traffic sign recognition (TSR) program was my final project in
             my computer vision class. The motivation for the project was to
             explore computer vision concepts while building a tool for my
-            senior project 
             <a href="./avocado.html"><strong><u> senior project</u></strong></a>.
             </p>
             <p>The theory behind this project was to train a support vector
-            machine (SVM) to recognize various traffic signs. In order to
-            reduce the dimensionality of the search space, the dimensionality
-            was reduced by using the Histogram of Oriented Gradients (HOG)
-            feature descriptor. Images were parsed for large sections of traffic sign
-            colors (red and yellow, in our case), and any large blob of color
-            was then run through the SVM to see if it was a traffic sign or
-            noise.
+            machine (SVM) to recognize various traffic signs. The dimensionality
+            of the search space was reduced by using the Histogram of Oriented 
+            Gradients (HOG) feature descriptor. Images were parsed for large 
+            sections of traffic sign colors (red and yellow, in our case), 
+            and any large blob of color was then run through the SVM to see 
+            if it was a traffic sign or noise.
             </p>
             <p>I thought the training aspect of this project was very interesting.
-            Machine learning typically requires a minimum of thousands of examples; 
+            Machine learning typically requires thousands of examples; 
             however, SVMs can learn with far fewer examples. Furthermore, rather
             than label the images manually, I wrote an algorithm that labeled
             the images for me! The algorithm worked like so:
@@ -71,18 +70,25 @@
             furthered my understanding of <strong>OpenCV</strong> and
             <strong>computer vision</strong>.
             </p>
-            <p>See the video below!</p>
-            <p>Note that in the video you will notice two interesting things
+            <p>In the video you will notice two interesting things
             (beyond the TSR!). The first is the terminal in the background,
             which shows the computer's requests for various signs (the training
-            session was not recorded). The second is that the STOP and POTS signs,
-            though different when both in the same orientation, are identical
+            session was not recorded). The second is that the STOP and POTS signs.
+            Though the signs are different when both in the same orientation, 
+            the signs appear to be identical (to the SVM)
             when one of the signs is flipped. This is due to how HOG breaks
             down the image to produce the feature descriptor (namely, small
-            boxes). HOG enough image to distinguish individual characters, but 
+            boxes). HOG's decomposition of the image is sufficient to 
+            distinguish individual characters, but 
             not enough to identify their orientation (that would have involved
             dramatically increasing the dimensionality, making the training
-            and program much slower).
+            and program much slower). Finally, note that I chose to use a POTS
+            sign to show the SVM is looking for more than a red octagon.
+            </p>
+            <p>Finally, I would choose to use a different machine learning
+            model for improved TSR, but I thought it would be fun to collect
+            training images and train the model in front of the class on my 
+            $200 Chromebook!
             </p>
             <hr>
             <video
