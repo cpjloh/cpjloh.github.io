@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jacob Loh</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <script src="../scripts/script.js"></script>
+        <meta charset="UTF-8">
+        <meta name="author" content="Jacob Loh">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <html lang ="en-US">
+    </head>
+    <body>
+        <header>
+            <a href="../index.html">
+            <h1>Jacob Loh</h1>
+            </a>
+            <!--<p>A little tagline about myself.</p>-->
+        </header>
+        <hr>
+        <nav style="margin-top:3%;margin-bottom:3%;">
+            <ul style="text-align:center;">
+                <li id="nav_li"><a href="../index.html#about">About</a></li>
+                <li id="nav_li"><a href="../index.html#experience">Experience</a></li>
+                <li id="nav_li"><a href="../index.html#projects">Projects</a></li>
+                <li id="nav_li"><a href="../index.html#education">Education</a></li>
+                <li id="nav_li"><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <hr>
+        <div id="titanic">
+            <a href="../index.html#projects"><h3>Predicting Titanic Survivors</h3></a>
+            <h4 style="margin-top:0">December 2019</h4>
+            <p>For this project, I developed a machine learning model for
+            predicting survivors on the Titanic.
+            Using a dataset from Kaggle, I was able to train
+            an SVM to predict whether a passenger might survive the disaster of
+            the Titanic.
+            </p>
+            <p>This project was a great introduction to a rigorous machine learning
+            project. This project required more than just training a model. I had
+            to review the data to understand which features were most important,
+            I had to clean the data to correct for missing entries, and I then
+            needed to normalize data to ensure the SVM could be most effective.
+            Finally, the model for this project spent little time in training,
+            which means I was able to spend more time reviewing and improving on
+            my results than waiting for models to train!
+            </p>
+            <p>Before I started any machine learning, I wanted to have an easy
+            way of testing the models I developed. To do this, I wrote a testing harness
+            and class that represents a model with an init method for training
+            and a predict method for predicting survivors.
+            I also chose to split the data to give myself 700 training
+            samples and 191 test samples.
+            </p>
+            <p> At this point, I developed my first, very simple models based on
+            heuristics. These first models were based on two of the most influential
+            heuristics. First, I tried predicting soley by the passenger's
+            sex. If the passenger was female, I predicted survival. If the
+            passenger was a male, I predicted death. This simple model worked
+            very well and achieved <strong>79.06%</strong> accuracy! From what I've seen online,
+            <strong>86%</strong> or <strong>87%</strong> is roughly the top accuracy for this dataset!
+            </p>
+            <p>I then tried predicted based on passenger class. If the passenger
+            was first class, I predicted survival, otherwise I predicted death.
+            This model resulted in <strong>73.82%</strong> accuracy.
+            </p>
+            <p>At this point I started to take a more thorough look at the data.
+            It became apparent that gender was very important. Figure 1
+            shows that females were dramatically more likely to survive than males
+            (74.10% vs 18.93%!).
+            Thus, sex will be a very important feature to consider training on.
+            </p>
+            <table>
+                <caption><strong>Table 1.</strong> Survival Rate vs. Sex</caption>
+                <tr>
+                    <th>Sex</th>
+                    <th>Survival Rate</th>
+                </tr>
+                <tr>
+                    <td>female</td>
+                    <td>0.7410</td>
+                </tr>
+                <tr>
+                    <td>male</td>
+                    <td>0.1893</td>
+                </tr>
+            </table>
+            <figure>
+                <img src="../media/titanicPlots/Sex.png" alt="Survival vs. Sex"
+                    title="Survival vs. Sex." style="width:40%; height:40%">
+                <figcaption><strong>Figure 1.</strong> Survival Rate vs. Sex</figcaption>
+            </figure>
+            <p>Another important characteristic proved to be class. First class
+            passengers were prioritized when it came to entering life boats, which
+            means first class passengers had a better chance of survival, which
+            can be seen in Table 2 and Figure 2.
+            </p>
+            <table>
+                <caption><strong>Table 2.</strong> Survival Rate vs. Passenger Class (Pclass)</caption>
+                <tr>
+                    <th>Pclass</th>
+                    <th>Survival Rate</th>
+                </tr>
+                <tr>
+                    <td>First class</td>
+                    <td>0.6036</td>
+                </tr>
+                <tr>
+                    <td>Second class</td>
+                    <td>0.4897</td>
+                </tr>
+                <tr>
+                    <td>Third class</td>
+                    <td>0.2539</td>
+                </tr>
+            </table>
+            <figure>
+                <img src="../media/titanicPlots/Pclass.png" alt="Survival vs. Pclass"
+                    title="Survival vs. Pclass." style="width:40%; height:40%">
+                <figcaption><strong>Figure 2.</strong> Survival Rate vs. Passenger Class</figcaption>
+            </figure>
+            <p>I also felt that age would be a significant feature to consider.
+            Looking at Table 3 and Figure 3, it is quite apparent that children
+            were prioritized, which is likely the result of the phrase "women
+            and children first!" The correlation isn't as strong as sex, but it
+            is sufficient for our first SVM. Note that I put the ages in buckets for the
+            visualization process only; ages were normalized in the actual
+            training and prediction processes.
+            </p>
+            <table>
+                <caption><strong>Table 3.</strong> Survival Rate vs. Age</caption>
+                <tr>
+                    <th>Age</th>
+                    <th>Survival Rate</th>
+                </tr>
+                <tr>
+                    <td>(0, 10]</td>
+                    <td>0.5833</td>
+                </tr>
+                <tr>
+                    <td>(10, 20]</td>
+                    <td>0.4915</td>
+                </tr>
+                <tr>
+                    <td>(20, 30]</td>
+                    <td>0.3837</td>
+                </tr>
+                <tr>
+                    <td>(30, 40]</td>
+                    <td>0.3661</td>
+                </tr>
+                <tr>
+                    <td>(40, 50]</td>
+                    <td>0.3485</td>
+                </tr>
+                <tr>
+                    <td>(50, 60]</td>
+                    <td>0.3429</td>
+                </tr>
+                <tr>
+                    <td>(60, 70]</td>
+                    <td>0.2000</td>
+                </tr>
+                <tr>
+                    <td>(70, 80]</td>
+                    <td>0.2500</td>
+                </tr>
+            </table>
+            <figure>
+                <img src="../media/titanicPlots/AgeBins.png" alt="Survival vs. Age"
+                    title="Survival vs. Age." style="width:40%; height:40%">
+                <figcaption><strong>Figure 3.</strong> Survival Rate vs. Age</figcaption>
+            </figure>
+            <p>The first SVM used sex, passenger class, and age (without normalizing!).
+            This worked better than any of my heuristic models. I found that 
+            over 5 runs (training and testing), the model had an average 
+            accuracy of <strong>81.36%</strong>!
+            </p>
+            <p>At this point, I tried tweaking some of the parameters of the SVM.
+            The first of these values was the C value, which is the penalty factor
+            for incorrect classifications during training. I started with a 
+            value of 1.0; however, upon sweeping through other values I found I 
+            achieved the best results with 1.0. The second of these values was
+            gamma, which is the spread of the kernel. By increasing gamma, the SVM
+            is able to be more flexible when fitting the data; however, increasing
+            gamma too much can result in overfitting. I started with a value of
+            1.0, and once again, I found the value of 1.0 to be the best value
+            value for gamma. Finally, I tried different kernels; however, the
+            original radial basis function (rbf) kernel proved to be most 
+            accurate. These results are summarized in Table 4.
+            <table>
+                <caption><strong>Table 4.</strong> Accuracy vs. Kernel Type</caption>
+                <tr>
+                    <th>Kernel Type</th>
+                    <th>Accuracy</th>
+                </tr>
+                <tr>
+                    <td>rbf</td>
+                    <td>~81%</td>
+                </tr>
+                <tr>
+                    <td>linear</td>
+                    <td>~79%</td>
+                </tr>
+                <tr>
+                    <td>poly</td>
+                    <td>~69%</td>
+                </tr>
+                <tr>
+                    <td>sigmoid</td>
+                    <td>~62%</td>
+                </tr>
+            </table>
+            <p>At this point, I decided to normalize the current features being
+            used in the SVM. Sex was normalized from 0 and 1 to -0.5 and 0.5 to 
+            center it around 0. Passenger class,
+            which was stored as 1, 2, and 3, was also centered around 0 by
+            subtracting 2 from each value. Age was normalized by subtracting
+            the mean age (30.02 years) and then dividing by the standard
+            deviation (14.67 years). In some cases, the passenger did not have
+            an age, in which case I generated a new age based on a normal
+            distribution with the same mean and standard deviation as the actual
+            data (note that I used max(0, genAge) to ensure no ages were negative).
+            </p>
+            <p>The first normaliztion was age, which raised the average accuracy slightly
+            to <strong>81.47%</strong>. I then normalized the passenger class, which raise the average
+            accuracy to <strong>82.10%</strong>. Finally, I normalized the gender, which raised the
+            average accuracy a little more to <strong>82.20%</strong>! At this point we have improved
+            more than <strong>3%</strong> over the original heuristic model!
+            </p>
+            <p>At this point, it was time to add new features. I first decided
+            to add the fares. Though this feature is similar to passenger class,
+            there is a correlation between survival and fare. This can be seen
+            in Table 5 and Figure 4, though how statistically significant these
+            trends are is questionable due to the low count of passengers with
+            higher fares. These counts can be seen in Table 6.
+            </p>
+            <table>
+                <caption><strong>Table 5.</strong> Survival Rate vs. Fare ($)</caption>
+                <tr>
+                    <th>Fare</th>
+                    <th>Survival Rate</th>
+                </tr>
+                <tr>
+                    <td>(0, 10]</td>
+                    <td>0.2160</td>
+                </tr>
+                <tr>
+                    <td>(10, 20]</td>
+                    <td>0.4429</td>
+                </tr>
+                <tr>
+                    <td>(20, 30]</td>
+                    <td>0.4234</td>
+                </tr>
+                <tr>
+                    <td>(30, 40]</td>
+                    <td>0.4130</td>
+                </tr>
+                <tr>
+                    <td>(40, 50]</td>
+                    <td>0.2000</td>
+                </tr>
+                <tr>
+                    <td>(50, 60]</td>
+                    <td>0.7241</td>
+                </tr>
+                <tr>
+                    <td>(60, 70]</td>
+                    <td>0.3846</td>
+                </tr>
+                <tr>
+                    <td>(70, 80]</td>
+                    <td>0.6538</td>
+                </tr>
+                <tr>
+                    <td>(80, 100]</td>
+                    <td>0.8125</td>
+                </tr>
+                <tr>
+                    <td>(100, 150]</td>
+                    <td>0.7727</td>
+                </tr>
+                <tr>
+                    <td>(150, 300]</td>
+                    <td>0.5263</td>
+                </tr>
+                <tr>
+                    <td>(300, 600]</td>
+                    <td>1.0000</td>
+                </tr>
+            </table>
+            <figure>
+                <img src="../media/titanicPlots/FareBins.png" alt="Survival vs. Fare"
+                    title="Survival vs. Fare." style="width:40%; height:40%">
+                <figcaption><strong>Figure 4.</strong> Survival Rate vs. Fare ($)</figcaption>
+            </figure>
+            <table>
+                <caption><strong>Table 6.</strong> Number of Passengers vs. Fare (%)</caption>
+                <tr>
+                    <th>Fare</th>
+                    <th>Number of Passengers</th>
+                </tr>
+                <tr>
+                    <td>(0, 10]</td>
+                    <td>250</td>
+                </tr>
+                <tr>
+                    <td>(10, 20]</td>
+                    <td>140</td>
+                </tr>
+                <tr>
+                    <td>(20, 30]</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>(30, 40]</td>
+                    <td>46</td>
+                </tr>
+                <tr>
+                    <td>(40, 50]</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>(50, 60]</td>
+                    <td>29</td>
+                </tr>
+                <tr>
+                    <td>(60, 70]</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>(70, 80]</td>
+                    <td>26</td>
+                </tr>
+                <tr>
+                    <td>(80, 100]</td>
+                    <td>16</td>
+                </tr>
+                <tr>
+                    <td>(100, 150]</td>
+                    <td>22</td>
+                </tr>
+                <tr>
+                    <td>(150, 300]</td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <td>(300, 600]</td>
+                    <td>2</td>
+                </tr>
+            </table>
+            <p>I normalized the fares by subtracting the mean ($32.50) and
+            dividing by the standard deviation ($48.81) before adding the fares
+            to the feature vector. Doing so produced a substantial improvement
+            over my previous results, bringing the average accuracy over 5 runs
+            up to <strong>83.98%</strong>!
+            </p>
+            <p>Next, I was curious if adding the departure port ("Embarked") would
+            improve the accuracy of the model. There appears to be some correlation
+            between the port and a passenger's survival (seen in Table 7 and
+            Figure 5), which is enough to give it a try!
+            </p>
+            <table>
+                <caption><strong>Table 7.</strong> Survival Rate vs. Departure Port</caption>
+                <tr>
+                    <th>Departure Port</th>
+                    <th>Survival Rate</th>
+                </tr>
+                <tr>
+                    <td>Cherbourg (C)</td>
+                    <td>0.5373</td>
+                </tr>
+                <tr>
+                    <td>Queenstown (Q)</td>
+                    <td>0.4444</td>
+                </tr>
+                <tr>
+                    <td>Southampton (S)</td>
+                    <td>0.3386</td>
+                </tr>
+            </table>
+            <figure>
+                <img src="../media/titanicPlots/Embarked.png" alt="Survival vs. Embarked"
+                    title="Survival vs. Embarked." style="width:40%; height:40%">
+                <figcaption><strong>Figure 5.</strong> Survival Rate vs. Departure Port</figcaption>
+            </figure>
+            <p>After mapping Cherbourg to -1, Queenstown to 1, and all other values
+            (Southampton and missing values) to 0, I added the departure port
+            ("Embarked") to the feature vector. Unfortunately, this significantly
+            reduced the average accuracy of the model over 5 runs to <strong>81.89%</strong>, so
+            I decided to remove the departure port from the feature vector.
+            </p>
+            <p>At this point, there were two final features I wanted to try
+            adding to the feature vector. These fields were the SibSp field, which represents
+            the number of siblings/spouses the passenger was traveling with
+            and the Parch field, which represents the number of parents/children
+            the passenger was traveling with. The correlations between a
+            passenger's survival and SibSp field are shown in Table 8 and Figure 6.
+            </p>
+            <table>
+                <caption><strong>Table 8.</strong> Survival Rate vs. SibSp</caption>
+                <tr>
+                    <th>SibSp</th>
+                    <th>Survival Rate</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0.5241</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0.4615</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>0.3524</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>0.2143</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>0.2143</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>0.0000</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>0.0000</td>
+                </tr>
+            </table>
+            <figure>
+                <img src="../media/titanicPlots/SibSp.png" alt="Survival vs. SibSp"
+                    title="Survival vs. SibSp." style="width:40%; height:40%">
+                <figcaption><strong>Figure 6.</strong> Survival Rate vs. SibSp</figcaption>
+            </figure>
+            <p>I tried combining the SibSp and Parch fields to produce a family
+            size field and then enginer an additional field for whether or not
+            a passenger was traveling alone. This produced much better results
+            with an average accuracy of <strong>84.92%</strong> over 5 runs!
+            </p>
+            <p>I then decided to try separating the fields to give the model
+            better resolution on these statistics by adding the SibSp and Parch
+            fields separately (normalized, of course), which produced a new
+            average accuracy of <strong>86.07%</strong>!
+            </p>
+            <p>With this final modification, I was able to achieve an average
+            accuracy close to what I had seen online. Furthermore, I cut the
+            error rate by almost <strong>50%</strong>!
+            </p>
+            <p>This project was a great way for me to get more experience working
+            with SVMs, but it also allowed me to learn how to "wrangle data."
+            A huge part of data science and machine learning is working with
+            data, which has become a notorious aspect of the field. It requires
+            cleaning data, analyzing data to understand which features might be
+            most important, and more! This project offered me all of that!
+            </p>
+        </div>
+        <footer>
+            <p>Last updated: December 17, 2019</p>
+        </footer>
+    </body>
+</html>
